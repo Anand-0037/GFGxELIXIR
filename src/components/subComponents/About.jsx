@@ -11,8 +11,8 @@ const About = () => {
       <div className="container mx-auto px-4">
         <Card
           className="border bg-black border-white/10 shadow-2xl backdrop-blur-sm"
-          data-aos="fade-up"
-          data-aos-duration="1000"
+          data-gsap="fade-up"
+          data-gsap-duration="1000"
         >
           <CardHeader>
             <CardTitle className="text-4xl text-center mb-4 flex items-center justify-center gap-3">
@@ -53,7 +53,7 @@ const About = () => {
             <div className="grid md:grid-cols-2 gap-6 mt-8">
               <div
                 className="flex items-start gap-4 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-                data-aos="fade-right"
+                data-gsap="fade-right"
               >
                 <Users className="w-8 h-8 text-white mt-1" />
                 <div>
@@ -67,7 +67,7 @@ const About = () => {
               </div>
               <div
                 className="flex items-start gap-4 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-                data-aos="fade-left"
+                data-gsap="fade-left"
               >
                 <Zap className="w-8 h-8 text-white mt-1" />
                 <div>
@@ -79,8 +79,8 @@ const About = () => {
               </div>
               <div
                 className="flex items-start gap-4 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-                data-aos="fade-right"
-                data-aos-delay="200"
+                data-gsap="fade-right"
+                data-gsap-delay="200"
               >
                 <Trophy className="w-8 h-8 text-white mt-1" />
                 <div>
@@ -94,8 +94,8 @@ const About = () => {
               </div>
               <div
                 className="flex items-start gap-4 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-                data-aos="fade-left"
-                data-aos-delay="200"
+                data-gsap="fade-left"
+                data-gsap-delay="200"
               >
                 <Sparkles className="w-8 h-8 text-white mt-1" />
                 <div>

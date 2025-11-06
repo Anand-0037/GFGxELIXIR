@@ -12,30 +12,30 @@ import { Brain, Code, Shield, Sparkles, Target, Zap } from "lucide-react";
 
 const Cards = () => {
   return (
-    <section className="py-20 from-black via-gray-900 to-black">
+    <section data-gsap="fade-up" className="py-20 from-black via-gray-900 to-black">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <p
             className="text-sm text-gray-400 uppercase tracking-widest mb-4 font-light"
-            data-aos="fade-down"
+            data-gsap="fade-down"
           >
             STRATEGIC OPERATIONS CLASSIFICATION
           </p>
           <div
             className="flex items-center justify-center gap-3 mb-4"
-            data-aos="zoom-in"
+            data-gsap="zoom-in"
           >
             <h2
               className="text-4xl md:text-6xl text-white font-light tracking-tight"
-              data-aos="fade-down"
+              data-gsap="fade-down"
             >
               Battle Fronts
             </h2>
           </div>
           <p
             className="text-lg md:text-xl text-gray-300"
-            data-aos="fade-up"
-            data-aos-delay="200"
+            data-gsap="fade-up"
+            data-gsap-delay="200"
           >
             Select your strategic division and deploy your expertise
           </p>
@@ -44,8 +44,8 @@ const Cards = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Card
             className="bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-            data-aos="flip-left"
-            data-aos-delay="100"
+            data-gsap="flip-left"
+            data-gsap-delay="100"
           >
             <CardHeader>
               <div className="flex items-center gap-3 mb-4">
@@ -75,8 +75,8 @@ const Cards = () => {
 
           <Card
             className="bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-            data-aos="flip-left"
-            data-aos-delay="200"
+            data-gsap="flip-left"
+            data-gsap-delay="200"
           >
             <CardHeader>
               <div className="mb-4">
@@ -98,8 +98,8 @@ const Cards = () => {
 
           <Card
             className="bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-            data-aos="flip-left"
-            data-aos-delay="300"
+            data-gsap="flip-left"
+            data-gsap-delay="300"
           >
             <CardHeader>
               <div className="mb-4">
@@ -123,8 +123,8 @@ const Cards = () => {
 
           <Card
             className="bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-            data-aos="flip-left"
-            data-aos-delay="400"
+            data-gsap="flip-left"
+            data-gsap-delay="400"
           >
             <CardHeader>
               <div className="mb-4">
@@ -146,8 +146,8 @@ const Cards = () => {
 
           <Card
             className="bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-            data-aos="flip-left"
-            data-aos-delay="500"
+            data-gsap="flip-left"
+            data-gsap-delay="500"
           >
             <CardHeader>
               <div className="mb-4">
@@ -171,8 +171,8 @@ const Cards = () => {
 
           <Card
             className="bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-            data-aos="flip-left"
-            data-aos-delay="600"
+            data-gsap="flip-left"
+            data-gsap-delay="600"
           >
             <CardHeader>
               <div className="mb-4">

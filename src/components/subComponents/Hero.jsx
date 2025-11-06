@@ -18,8 +18,8 @@ const Hero = () => {
           {/* Official Badge */}
           <div
             className="flex justify-center gap-4 flex-wrap"
-            data-aos="fade-down"
-            data-aos-duration="1000"
+            data-gsap="fade-down"
+            data-gsap-duration="1000"
           >
             <Badge className="px-6 py-3 text-sm bg-white/10 backdrop-blur-sm border-white/20 text-white shadow-2xl transform  transition-transform duration-300">
               COMMAND BRANCH: GEEKSFORGEEKS X ELIXIR
@@ -28,14 +28,14 @@ const Hero = () => {
 
           {/* Hero Headlines */}
           <div
-            data-aos="zoom-in"
-            data-aos-duration="1000"
-            data-aos-delay="200"
+            data-gsap="zoom-in"
+            data-gsap-duration="1000"
+            data-gsap-delay="200"
             className=""
           >
             <p
               className="text-sm md:text-base text-gray-400 mb-4 tracking-widest font-light uppercase"
-              data-aos="fade-up"
+              data-gsap="fade-up"
             >
               OPERATION DATE: FEBRUARY 15-17, 2025
             </p>
@@ -46,15 +46,15 @@ const Hero = () => {
             </div>
             <h2
               className="text-4xl md:text-5xl  text-white mb-8 tracking-wide"
-              data-aos="fade-up"
-              data-aos-delay="400"
+              data-gsap="fade-up"
+              data-gsap-delay="400"
             >
               THE WALLS OF INNOVATION
             </h2>
             <p
               className="text-lg md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
-              data-aos="fade-up"
-              data-aos-delay="600"
+              data-gsap="fade-up"
+              data-gsap-delay="600"
             >
               <span className="text-white font-semibold">
                 Dedicate your heart to innovation.
@@ -68,8 +68,8 @@ const Hero = () => {
           {/* Epic CTAs */}
           <div
             className="flex flex-col sm:flex-row gap-6 justify-center mt-12"
-            data-aos="fade-up"
-            data-aos-delay="800"
+            data-gsap="fade-up"
+            data-gsap-delay="800"
           >
             <Button
               size="lg"
@@ -90,8 +90,8 @@ const Hero = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-20">
             <div
               className="bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl p-8 rounded-lg transform hover:scale-105 hover:bg-white/10 transition-all duration-300"
-              data-aos="fade-up"
-              data-aos-delay="1000"
+              data-gsap="fade-up"
+              data-gsap-delay="1000"
             >
               <div className="text-5xl mb-3"></div>
               <div className="text-5xl text-white mb-2">72</div>
@@ -101,8 +101,8 @@ const Hero = () => {
             </div>
             <div
               className="bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl p-8 rounded-lg transform hover:scale-105 hover:bg-white/10 transition-all duration-300"
-              data-aos="fade-up"
-              data-aos-delay="1200"
+              data-gsap="fade-up"
+              data-gsap-delay="1200"
             >
               <div className="text-5xl mb-3"></div>
               <div className="text-5xl text-white mb-2">500+</div>
@@ -112,8 +112,8 @@ const Hero = () => {
             </div>
             <div
               className="bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl p-8 rounded-lg transform hover:scale-105 hover:bg-white/10 transition-all duration-300"
-              data-aos="fade-up"
-              data-aos-delay="1400"
+              data-gsap="fade-up"
+              data-gsap-delay="1400"
             >
               <div className="text-5xl mb-3"></div>
               <div className="text-5xl text-white mb-2 drop-shadow-lg">
@@ -125,8 +125,8 @@ const Hero = () => {
             </div>
             <div
               className="bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl p-8 rounded-lg transform hover:scale-105 hover:bg-white/10 transition-all duration-300"
-              data-aos="fade-up"
-              data-aos-delay="1600"
+              data-gsap="fade-up"
+              data-gsap-delay="1600"
             >
               <div className="text-5xl mb-3"></div>
               <div className="text-5xl text-white mb-2">5</div>

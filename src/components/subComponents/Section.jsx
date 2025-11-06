@@ -11,19 +11,19 @@ const Section = () => {
         <div className="text-center mb-12">
           <div
             className="flex items-center justify-center gap-3 mb-4"
-            data-aos="zoom-in"
+            data-gsap="zoom-in"
           >
             <h2
               className="text-5xl text-white font-light tracking-tight"
-              data-aos="fade-down"
+              data-gsap="fade-down"
             >
               Mission Timeline
             </h2>
           </div>
           <p
             className="text-xl text-gray-400"
-            data-aos="fade-up"
-            data-aos-delay="200"
+            data-gsap="fade-up"
+            data-gsap-delay="200"
           >
             The Survey Corps battle plan
           </p>
@@ -60,8 +60,8 @@ const Section = () => {
             <div
               key={index}
               className="flex gap-6"
-              data-aos="fade-right"
-              data-aos-delay={index * 200}
+              data-gsap="fade-right"
+              data-gsap-delay={index * 200}
             >
               <div className="flex flex-col items-center">
                 <div className="w-1 h-full bg-white/20 last:hidden mt-2"></div>

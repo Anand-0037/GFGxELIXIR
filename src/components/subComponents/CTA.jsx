@@ -16,7 +16,7 @@ const CTA = () => {
       <div className="container mx-auto px-4 text-center">
         <Card
           className="bg-white/5 backdrop-blur-sm border border-white/20 shadow-2xl max-w-2xl mx-auto hover:bg-white/10 transition-all duration-300"
-          data-aos="zoom-in"
+          data-gsap="zoom-in"
         >
           <CardHeader>
             <div className="mb-4">

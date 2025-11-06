@@ -11,14 +11,14 @@ const Prizes = () => {
         <div className="text-center mb-12">
           <h2
             className="text-5xl text-white font-light tracking-tight mb-4"
-            data-aos="fade-down"
+            data-gsap="fade-down"
           >
             Prize Pool
           </h2>
           <p
             className="text-xl text-gray-400"
-            data-aos="fade-up"
-            data-aos-delay="200"
+            data-gsap="fade-up"
+            data-gsap-delay="200"
           >
             The spoils of victory
           </p>
@@ -27,8 +27,8 @@ const Prizes = () => {
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <Card
             className="bg-black text-white border border-white/20 shadow-2xl hover:scale-105 transform transition-all duration-300"
-            data-aos="flip-left"
-            data-aos-delay="100"
+            data-gsap="flip-left"
+            data-gsap-delay="100"
           >
             <CardHeader className="text-center">
               <div className="text-6xl mb-4">🥇</div>
@@ -44,8 +44,8 @@ const Prizes = () => {
 
           <Card
             className="bg-black text-white border border-white/20 shadow-2xl hover:scale-105 transform transition-all duration-300"
-            data-aos="flip-left"
-            data-aos-delay="200"
+            data-gsap="flip-left"
+            data-gsap-delay="200"
           >
             <CardHeader className="text-center">
               <div className="text-6xl mb-4">🥈</div>
@@ -61,8 +61,8 @@ const Prizes = () => {
 
           <Card
             className="bg-black text-white border border-white/20 shadow-2xl hover:scale-105 transform transition-all duration-300"
-            data-aos="flip-left"
-            data-aos-delay="300"
+            data-gsap="flip-left"
+            data-gsap-delay="300"
           >
             <CardHeader className="text-center">
               <div className="text-6xl mb-4">🥉</div>
@@ -80,8 +80,8 @@ const Prizes = () => {
         <div className="grid md:grid-cols-2 gap-6 mt-8 max-w-4xl mx-auto">
           <Card
             className="bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-            data-aos="zoom-in"
-            data-aos-delay="400"
+            data-gsap="zoom-in"
+            data-gsap-delay="400"
           >
             <CardHeader>
               <Award className="w-8 h-8 text-white mb-2" />
@@ -95,8 +95,8 @@ const Prizes = () => {
 
           <Card
             className="bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-            data-aos="zoom-in"
-            data-aos-delay="500"
+            data-gsap="zoom-in"
+            data-gsap-delay="500"
           >
             <CardHeader>
               <Sparkles className="w-8 h-8 text-white mb-2" />
