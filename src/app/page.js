@@ -11,7 +11,7 @@ import MissionTimeline from "@/components/subComponents/MissionTimeline";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden">
+    <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
       <section id="hero" className="relative z-10">
         <Hero />
       </section>
