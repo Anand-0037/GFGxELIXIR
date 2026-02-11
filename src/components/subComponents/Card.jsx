@@ -129,6 +129,7 @@ const Cards = () => {
               ref={(el) => (cardsRef.current[i] = el)}
               className={`
                 group relative cursor-pointer
+                group relative cursor-pointer
                 transition-all duration-700 ease-out
                 hover:scale-[1.03] xl:hover:scale-100
                 ${activeCard === i ? "xl:flex-[1.5]" : "xl:flex-1"}
@@ -164,6 +165,7 @@ const Cards = () => {
                   {/* Icon */}
                   <div className="mb-6">
                     <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center group-hover:bg-white/15 group-hover:border-white/20 group-hover:scale-110 transition-all duration-500">
+                    <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center group-hover:bg-white/15 group-hover:border-white/20 group-hover:scale-110 transition-all duration-500">
                       {cloneElement(item.icon, {
                         className: "w-6 h-6 text-white/70 group-hover:text-white transition-colors duration-300",
                       })}
@@ -176,6 +178,7 @@ const Cards = () => {
                   </div>
 
                   {/* Title */}
+                  <h3 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-white tracking-tight mb-3 group-hover:translate-x-2 transition-transform duration-500">
                   <h3 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-white tracking-tight mb-3 group-hover:translate-x-2 transition-transform duration-500">
                     {item.title}
                   </h3>
