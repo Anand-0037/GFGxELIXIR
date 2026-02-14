@@ -94,39 +94,26 @@ const Cards = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen w-full bg-black text-white overflow-hidden"
+      className="relative min-h-screen w-full text-white overflow-hidden"
     >
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
-        <video
-          src="https://res.cloudinary.com/djrs8vc5s/video/upload/f_auto,q_auto:good/v1730902345/1106_2_-1_ltl6d2.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="none"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black" />
-      </div>
 
       <div className="relative z-20 container mx-auto px-4 py-28">
         {/* Section Header */}
         <div ref={titleRef} className="text-center mb-24">
           <p
-            className={`${bodyFont.className} text-xs text-white/50 uppercase tracking-[0.5em] font-light mb-6`}
+            className={`${bodyFont.className} text-xs text-white/60 uppercase tracking-[0.5em] font-light mb-6`}
           >
             [ Mission Sectors ]
           </p>
 
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6">
             Cosmic{" "}
-            <span className="font-semibold italic bg-gradient-to-r from-[#F8D47A] via-[#E0A743] to-[#C67824] bg-clip-text text-transparent">
+            <span className="font-semibold italic bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
               Horizons
             </span>
           </h2>
 
-          <p className={`${bodyFont.className} text-lg text-white/40 max-w-md mx-auto font-medium`}>
+          <p className={`${bodyFont.className} text-lg text-white/60 max-w-md mx-auto font-light`}>
             Choose your constellation and embark on an interstellar journey
           </p>
         </div>
@@ -208,7 +195,7 @@ const Cards = () => {
         {/* Bottom Tagline */}
         <div className="mt-20 flex items-center justify-center gap-6">
           <div className="w-20 h-px bg-gradient-to-r from-transparent to-white/20" />
-          <p className="text-white/20 text-xs tracking-[0.4em] uppercase font-light">
+          <p className="text-white/60 text-xs tracking-[0.4em] uppercase font-light">
             4 Dimensions • Infinite Universe
           </p>
           <div className="w-20 h-px bg-gradient-to-l from-transparent to-white/20" />

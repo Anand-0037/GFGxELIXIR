@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Bebas_Neue, DM_Sans } from "next/font/google";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Accordion,
   AccordionContent,
@@ -10,8 +12,9 @@ import { faqs } from "@/lib/data/data";
 import {
   animateSectionFadeIn,
   animateCardsStagger,
-  cleanupScrollTriggers,
 } from "@/lib/gsap-utils";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const sectionHeadingFont = Bebas_Neue({
   subsets: ["latin"],
@@ -28,13 +31,15 @@ const FAQ = () => {
   const itemsRef = useRef([]);
 
   useEffect(() => {
-    animateSectionFadeIn(sectionRef.current);
-    animateCardsStagger(itemsRef.current, {
-      duration: 0.8,
-      staggerDelay: 0.1,
-    });
+    let ctx = gsap.context(() => {
+      animateSectionFadeIn(sectionRef.current);
+      animateCardsStagger(itemsRef.current, {
+        duration: 0.8,
+        staggerDelay: 0.1,
+      });
+    }, sectionRef);
 
-    return () => cleanupScrollTriggers();
+    return () => ctx.revert();
   }, []);
 
 
@@ -44,26 +49,13 @@ const FAQ = () => {
       ref={sectionRef}
       className="relative py-24 text-white overflow-hidden"
     >
-      <div className="absolute inset-0 z-0">
-        <video
-          src="https://res.cloudinary.com/djrs8vc5s/video/upload/f_auto,q_auto:good/v1730902345/1106_2_-1_ltl6d2.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="none"
-          className="w-full h-full object-cover opacity-25"
-          style={{ pointerEvents: "none" }}
-        />
-        <div className="absolute inset-0 bg-linear-to-b from-black/90 via-black/80 to-black/90" />
-      </div>
 
       <div className="relative z-10 container mx-auto px-4 max-w-3xl">
         <div className="text-center mb-16">
           <h2
             className={`${sectionHeadingFont.className} text-5xl tracking-[0.08em] uppercase mb-3`}
           >
-            <span className="bg-gradient-to-r from-[#F8D47A] via-[#E0A743] to-[#C67824] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
               Frequently Asked Questions
             </span>
           </h2>

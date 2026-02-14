@@ -14,7 +14,7 @@ import SmallSponsor from "@/components/subComponents/SmallSponsor";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="relative min-h-screen text-white overflow-x-hidden">
       <SpotlightNavbar />
 
       <section id="hero" className="relative z-10">

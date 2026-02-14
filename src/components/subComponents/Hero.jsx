@@ -3,8 +3,13 @@ import { Audiowide } from "next/font/google";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { Code, Target, ExternalLink } from "lucide-react";
-import { animatePinnedSection, cleanupScrollTriggers } from "@/lib/gsap-utils";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { animatePinnedSection } from "@/lib/gsap-utils";
 import CountdownTimer from "./CountdownTimer";
+import Image from "next/image";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const audiowide = Audiowide({
   subsets: ["latin"],
@@ -17,48 +22,51 @@ const Hero = () => {
   const contentRef = useRef(null);
 
   useEffect(() => {
-    animatePinnedSection(sectionRef.current, videoRef.current, contentRef.current);
+    let ctx = gsap.context(() => {
+       animatePinnedSection(sectionRef.current, videoRef.current, contentRef.current);
+    }, sectionRef);
 
-    return () => cleanupScrollTriggers();
+    return () => ctx.revert();
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[90vh] w-full overflow-hidden bg-black text-white"
+      className="relative min-h-[90vh] w-full overflow-hidden text-white"
     >
-      <video
-        ref={videoRef}
-        src="https://res.cloudinary.com/djrs8vc5s/video/upload/f_auto,q_auto:good/v1730851634/1106-1_ure0wq.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ pointerEvents: "none" }}
-      />
-
-      <div className="absolute inset-0 bg-black/50" />
 
       <div
         ref={contentRef}
-        className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4 space-y-5 pt-15 sm:pt-22"
+        className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4 space-y-4 pt-15 sm:pt-22"
       >
-        <Badge className="px-4 py-2 text-xs sm:text-sm bg-white/10 backdrop-blur-sm border-white/20 text-white shadow-lg">
-          COMMAND BRANCH: GEEKSFORGEEKS X ELIXIR
-        </Badge>
-
-        <h1
-          className={`${audiowide.className} text-4xl sm:text-6xl md:text-8xl tracking-[0.05em] leading-[1.05]`}
+       <Badge 
+          className="px-4 py-2 text-xs sm:text-sm bg-white/10 backdrop-blur-sm border-white/20 text-white shadow-lg translate-y-8 sm:translate-y-6"
         >
-          BREAK THROUGH
-        </h1>
+          COMMAND BRANCH: GEEKSFORGEEKS X ELIXIR
+       </Badge>
+
+        <div className="relative flex items-center justify-center w-full h-20 sm:h-30 md:h-40 lg:h-52">
+          {/* The Image is now absolute, so its "transparent border" won't push anything */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none translate-x-5 translate-y-11">
+            <Image 
+              src="/stellaris logo.png" 
+              alt="Stellaris Logo" 
+              width={1200}
+              height={400}
+              // scale-[2.5] or higher will make the visible logo huge 
+              // while the container stays small
+              className="rotate-90 scale-[3.5] sm:scale-[4.5] md:scale-[5.5] w-auto h-full object-contain"
+              priority
+            />
+          </div>
+        </div>
+
+
 
         <h2
-          className={`${audiowide.className} text-xl sm:text-3xl md:text-5xl text-white/90 tracking-[0.05em] leading-tight`}
+          className={`${audiowide.className} text-xl sm:text-2xl md:text-3xl text-white/90 tracking-[0.05em] leading-tight`}
         >
-          THE WALLS OF INNOVATION
+          BREAK THROUGH THE WALLS OF INNOVATION
         </h2>
 
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 w-full sm:w-auto px-2">

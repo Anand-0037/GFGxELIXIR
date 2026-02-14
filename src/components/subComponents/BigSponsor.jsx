@@ -3,22 +3,28 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { Card, CardContent } from "../ui/card";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   animateSectionFadeIn,
   animateCardsStagger,
-  cleanupScrollTriggers,
 } from "@/lib/gsap-utils";
 import Image from "next/image";
 import { sponsorsData } from "@/lib/data/data";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const BigSponsor = () => {
   const sectionRef = useRef(null);
   const cardsRef = useRef([]);
 
   useEffect(() => {
-    animateSectionFadeIn(sectionRef.current);
-    animateCardsStagger(cardsRef.current);
-    return () => cleanupScrollTriggers();
+    let ctx = gsap.context(() => {
+      animateSectionFadeIn(sectionRef.current);
+      animateCardsStagger(cardsRef.current);
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (

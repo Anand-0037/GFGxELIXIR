@@ -128,11 +128,27 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
+/* Force global cursor override */
+html, body, a, button, [role="button"] {
+  cursor: url('/rocket-cursor.svg') 0 0, auto !important;
+}
+
+@keyframes astro-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
   }
-  body {
-    @apply bg-background text-foreground;
+  25% {
+    transform: translateY(-15px) rotate(2deg);
   }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(15px) rotate(-2deg);
+  }
+}
+
+.animate-astro-float {
+  animation: astro-float 6s ease-in-out infinite;
 }

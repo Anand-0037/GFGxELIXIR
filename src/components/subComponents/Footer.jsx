@@ -3,7 +3,7 @@ import { Calendar, Clock, Github, Instagram, Linkedin, Mail, Twitter } from "luc
 
 const Footer = () => {
   return (
-    <footer className="relative bg-linear-to-b from-black via-[#0a0a0a] to-black border-t border-white/10 py-16">
+    <footer className="relative bg-black/40 backdrop-blur-md border-t border-white/10 py-16">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           <div>

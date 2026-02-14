@@ -53,10 +53,13 @@ export const Timeline = ({ data }) => {
       className="w-full flex justify-center items-center flex-col bg-transparent font-sans md:px-10"
       ref={containerRef}>
       <div className="max-w-7xl mx-auto pt-20 px-4 md:px-8 lg:px-10">
-        <h2 className="text-4xl md:text-6xl lg:text-8xl mb-2 text-center  text-white max-w-4xl font-bold">
-          Mission Timeline
+        <h2 className="text-4xl md:text-6xl lg:text-8xl mb-2 text-center text-white max-w-4xl font-bold">
+          Mission{" "}
+          <span className="bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
+            Timeline
+          </span>
         </h2>
-        <p className="text-neutral-400 text-center text-sm md:text-base max-w-sm">
+        <p className="text-neutral-400 text-center text-sm md:text-base max-w-sm mx-auto">
           The Survey Corps battle plans and key milestones.
         </p>
       </div>

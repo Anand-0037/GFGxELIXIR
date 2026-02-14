@@ -134,21 +134,7 @@ const Prizes = () => {
   ];
 
   return (
-    <section className="relative min-h-screen py-24 bg-[#050505] text-white overflow-hidden flex flex-col justify-center perspective-1000">
-      
-      <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          src="https://res.cloudinary.com/djrs8vc5s/video/upload/f_auto,q_auto:good/v1730902345/1106_2_-1_ltl6d2.mp4"
-          loop
-          muted
-          playsInline
-          preload="none"
-          className="w-full h-full object-cover opacity-50" 
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]" />
-        <div className="absolute inset-0 bg-black/40" /> 
-      </div>
+    <section className="relative min-h-screen py-24 text-white overflow-hidden flex flex-col justify-center perspective-1000">
 
       <div className="relative z-10 container mx-auto px-4">
         
@@ -159,10 +145,10 @@ const Prizes = () => {
              transition={{ duration: 0.6 }}
           >
             <h2 className="text-5xl md:text-7xl tracking-tighter mb-4 text-white">
-              <span className="font-light">Cosmic</span> <span className="font-bold italic">Rewards</span>
+              <span className="font-light">Cosmic</span> <span className="font-bold italic bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">Rewards</span>
             </h2>
           </motion.div>
-          <p className="text-lg text-gray-400 font-light max-w-xl mx-auto">
+          <p className="text-lg text-gray-400 font-semi-bold max-w-xl mx-auto">
             Choose your constellation and embark on an interstellar journey.
           </p>
         </div>

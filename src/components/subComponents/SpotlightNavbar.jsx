@@ -4,11 +4,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { animate, motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import Image from "next/image"
+import Link from "next/link";
 
 export function SpotlightNavbar({
   items = [
     { label: "Home", href: "#hero" },
-    { label: "About", href: "#mission-briefing" },
+    
+    { label: "Mission", href: "#mission-briefing" },
     { label: "Tracks", href: "#tracks" },
     { label: "Timelines", href: "#timeline" },
     { label: "Sponsors", href: "#sponsors" },
@@ -70,21 +73,25 @@ export function SpotlightNavbar({
         ref={navRef}
         className={cn(
           "spotlight-nav spotlight-nav-bg glass-border spotlight-nav-shadow",
-          "relative h-16 rounded-full transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl w-full max-w-7xl mx-auto"
+          "relative h-16 rounded-full transition-all duration-300 overflow-hidden bg-black/10 backdrop-blur-xs border border-white/10 shadow-2xl w-full max-w-7xl mx-auto"
         )}
       >
-      
+        
         <div className="relative flex items-center justify-between h-full px-6 sm:px-10 z-[10]">
          
-          <div 
-            className="flex items-center cursor-pointer group"
-            onClick={() => handleItemClick(items[0], 0)}
+          <button 
+            onClick={() => handleItemClick({ href: "#hero", label: "Home" }, 0)}
+            className="focus:outline-none"
           >
-            <span className="text-white text-xl sm:text-2xl font-semibold tracking-wide transition-all duration-300">
-              Stellaris
-            </span>
-          </div>
-
+            <Image 
+              src="/Steller A.png" 
+              alt="Stellaris Logo"
+              width={150} 
+              height={40} 
+              className="h-8 sm:h-16 w-auto object-contain cursor-pointer"
+              priority 
+            />
+          </button>
           
           <ul className="hidden lg:flex items-center gap-1 sm:gap-2">
             {items.map((item, idx) => {
@@ -95,7 +102,7 @@ export function SpotlightNavbar({
                     data-index={idx}
                     onClick={() => handleItemClick(item, idx)}
                     className={cn(
-                      "px-3 sm:px-4 py-2 text-sm font-medium transition-all duration-200 rounded-full",
+                      "px-3 sm:px-4 py-2 text-base font-medium transition-all duration-200 rounded-full",
                       isRegister
                         ? "ml-4 px-6 py-1.5 border border-white bg-gray-500/10 hover:bg-gray-500/20 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)] rounded-full"
                         : activeIndex === idx

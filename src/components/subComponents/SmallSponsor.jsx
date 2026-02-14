@@ -4,28 +4,34 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { Card, CardContent } from "../ui/card";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   animateSectionFadeIn,
   animateCardsStagger,
-  cleanupScrollTriggers,
 } from "@/lib/gsap-utils";
 import Image from "next/image";
 import { sponsorsData } from "@/lib/data/data";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const SmallSponsor = () => {
   const sectionRef = useRef(null);
   const cardsRef = useRef([]);
 
   useEffect(() => {
-    animateSectionFadeIn(sectionRef.current);
-    animateCardsStagger(cardsRef.current);
-    return () => cleanupScrollTriggers();
+    let ctx = gsap.context(() => {
+      animateSectionFadeIn(sectionRef.current);
+      animateCardsStagger(cardsRef.current);
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="relative py-40 bg-black text-white overflow-hidden"
+      className="relative py-40 text-white overflow-hidden"
     >
       {/* Background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/5 rounded-full pointer-events-none" />
@@ -35,13 +41,13 @@ const SmallSponsor = () => {
         <div className="flex flex-col items-center mb-28">
           <div className="flex items-center gap-4 mb-4">
             <div className="h-[1px] w-12 bg-blue-500/50" />
-            <span className="text-blue-500 font-mono text-[10px] tracking-[0.5em] uppercase">
+            <span className="text-blue-400 font-mono text-[12px] tracking-[0.5em] uppercase">
               Sector Alpha // Sponsors
             </span>
             <div className="h-[1px] w-12 bg-blue-500/50" />
           </div>
           <h2 className="text-5xl md:text-7xl font-extralight tracking-tighter uppercase italic">
-            Past <span className="font-bold text-blue-500">Sponsors</span>
+            Past <span className="font-bold bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">Sponsors</span>
           </h2>
         </div>
 

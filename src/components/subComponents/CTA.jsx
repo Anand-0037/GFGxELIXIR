@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import { Bebas_Neue } from "next/font/google";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "../ui/button";
-import { Sparkles } from "lucide-react";
-import { cleanupScrollTriggers } from "@/lib/gsap-utils";
+import Image from "next/image";
 
 const sectionHeadingFont = Bebas_Neue({
   subsets: ["latin"],
@@ -15,71 +15,71 @@ const CTA = () => {
   const contentRef = useRef(null);
 
   useEffect(() => {
-    gsap.fromTo(
-      sectionRef.current,
-      { scale: 1.05, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 1.5,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 90%",
-          end: "bottom top",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
+    let ctx = gsap.context(() => {
+      gsap.fromTo(
+        sectionRef.current,
+        { scale: 1.05, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1.5,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 90%",
+            end: "bottom top",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
 
-    gsap.fromTo(
-      contentRef.current,
-      { opacity: 0, y: 60 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.4,
-        ease: "power2.out",
-        delay: 0.2,
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: "top 85%",
-        },
-      }
-    );
+      gsap.fromTo(
+        contentRef.current,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.4,
+          ease: "power2.out",
+          delay: 0.2,
+          scrollTrigger: {
+            trigger: contentRef.current,
+            start: "top 85%",
+          },
+        }
+      );
+    }, sectionRef);
 
-    return () => cleanupScrollTriggers();
+    return () => ctx.revert();
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="relative h-[90vh] w-full overflow-hidden bg-black text-white flex items-center justify-center"
+      className="relative h-[90vh] w-full overflow-hidden text-white flex items-center justify-center"
     >
-      <video
-        src="https://res.cloudinary.com/djrs8vc5s/video/upload/f_auto,q_auto:good/v1730902345/1106_4_-1_ngskzm.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="none"
-        className="absolute inset-0 w-full h-full object-cover opacity-60"
-        style={{ pointerEvents: "none" }}
-      />
-      <div className="absolute inset-0 bg-linear-to-t from-black via-black/70 to-transparent" />
 
       <div
         ref={contentRef}
         className="relative z-10 text-center max-w-3xl mx-auto px-6"
       >
         <div className="mb-6 flex justify-center">
-          <Sparkles className="w-10 h-10 text-white animate-pulse" />
+            <div className="relative w-24 h-24 animate-pulse">
+              <Image 
+                src="/Steller A.png" 
+                alt="Stellaris Icon" 
+                fill
+                className="object-contain"
+              />
+            </div>
         </div>
 
         <h2
           className={`${sectionHeadingFont.className} text-5xl md:text-7xl tracking-[0.08em] uppercase mb-4 leading-tight`}
         >
-          Ready to Face the Titans?
+          <span className="bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
+            Ready to Face the Titans?
+          </span>
         </h2>
         <p className="text-lg md:text-xl text-gray-300 mb-10">
           Join the <span className="text-white font-semibold">Survey Corps</span>.  
@@ -105,8 +105,8 @@ const CTA = () => {
             </a>
         </div>
 
-        <p className="mt-8 text-sm text-gray-500 tracking-wide">
-          Registration closes <span className="text-white">February 1, 2025</span>
+        <p className="mt-8 text-sm text-gray-400 tracking-wide">
+          Registration closes <span className="text-white">March 15, 2026</span>
         </p>
       </div>
     </section>

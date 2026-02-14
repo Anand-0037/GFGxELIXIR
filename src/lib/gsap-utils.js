@@ -96,17 +96,21 @@ export const animatePinnedSection = (
     },
   });
 
-  tl.fromTo(
-    videoElement,
-    { scale: 1, opacity: 1, filter: "blur(0px)" },
-    { scale: 1.25, opacity: 0.4, filter: "blur(4px)", ease: "power3.inOut" },
-    0,
-  );
+  if (videoElement) {
+    tl.fromTo(
+      videoElement,
+      { scale: 1, opacity: 1, filter: "blur(0px)" },
+      { scale: 1.25, opacity: 0.4, filter: "blur(4px)", ease: "power3.inOut" },
+      0,
+    );
+  }
 
-  tl.fromTo(
-    contentElement,
-    { opacity: 1, y: 0 },
-    { opacity: 0, y: -100, ease: "power2.inOut" },
-    0,
-  );
+  if (contentElement) {
+    tl.fromTo(
+      contentElement,
+      { opacity: 1, y: 0 },
+      { opacity: 0, y: -100, ease: "power2.inOut" },
+      0,
+    );
+  }
 };

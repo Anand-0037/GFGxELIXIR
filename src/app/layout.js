@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import GSAPProvider from "@/components/gsap-provider";
+import BackgroundVideo from "@/components/BackgroundVideo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,8 +23,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-transparent`}
       >
+        <BackgroundVideo />
         <GSAPProvider>{children}</GSAPProvider>
       </body>
     </html>

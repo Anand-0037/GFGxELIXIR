@@ -1,0 +1,8 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Irregular asteroid shape - Darker -->
+  <path d="M15.5 2.5C10.5 2.5 6 5.5 4 10C2.5 14 3.5 19 6 23C9 27 14 30 19 29.5C24 29 28 25.5 29.5 20.5C31 16 29 11 26 7.5C23 4 19.5 2.5 15.5 2.5Z" fill="#4B5563" stroke="#1F2937" stroke-width="1.5"/>
+  <!-- Craters - Slightly Lighter/Darker for contrast -->
+  <circle cx="10" cy="9" r="2" fill="#374151" opacity="0.6"/>
+  <circle cx="21" cy="18" r="3" fill="#374151" opacity="0.6"/>
+  <circle cx="14" cy="22" r="1.5" fill="#374151" opacity="0.6"/>
+</svg>
