@@ -10,6 +10,7 @@ import {
   animateSectionFadeIn,
   animateCardsStagger,
 } from "@/lib/gsap-utils";
+// import Image from "next/image";
 import { sponsorsData } from "@/lib/data/data";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -68,30 +69,30 @@ const SmallSponsor = () => {
                   </span>
 
                   <div
-                    className="relative w-45 h-43 bg-white/5 flex items-center justify-center transition-transform duration-700 group-hover:rotate-360"
-                    style={{
-                      clipPath:
-                        "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)",
-                    }}
+                    className="relative w-45 h-42 bg-white/5 flex items-center justify-center"
+                    // className="relative w-45 h-42 bg-white/5 flex items-center justify-center transition-transform duration-700 group-hover:rotate-[360deg]"
+                    // style={{
+                    //   clipPath:
+                    //     "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)",
+                    // }}
                   >
-                    <div className="absolute">
+                    <div className="absolute"> 
                       <img
-                      width={120}
-                      height={150}
+                        width={130}
+                        height={100}
                         src={sponsor.image}
                         alt={sponsor.alt}
-                        className="object-contain text-white group-hover:grayscale-0 brightness-100 group-hover:brightness-100 transition-all duration-1000"
+                        className="object-contain"
+                        // className="object-contain filter grayscale group-hover:grayscale-0 brightness-100 group-hover:brightness-100 transition-all duration-1000"
                       />
                     </div>
                   </div>
 
-                  <div className="w-full text-center mt-6 mb-2">
+                  <div className="w-full text-center mt-6">
                     <p className="text-[10px] font-mono tracking-widest text-white/40 mb-1 group-hover:text-blue-300">
                       AUTHORIZED ENTITY
                     </p>
-                  </div>
-                  <div>
-                    <h3 className="text-xs text-center font-bold tracking-widest uppercase leading-tight">
+                    <h3 className="text-xs font-bold tracking-widest uppercase leading-tight">
                       {sponsor.tier}
                     </h3>
                   </div>
