@@ -23,19 +23,23 @@ const Hero = () => {
 
   // devfolio button
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://apply.devfolio.co/v2/sdk.js';
+    const script = document.createElement("script");
+    script.src = "https://apply.devfolio.co/v2/sdk.js";
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
     return () => {
       document.body.removeChild(script);
-    }
-}, []);
+    };
+  }, []);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-       animatePinnedSection(sectionRef.current, videoRef.current, contentRef.current);
+      animatePinnedSection(
+        sectionRef.current,
+        videoRef.current,
+        contentRef.current,
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -46,34 +50,29 @@ const Hero = () => {
       ref={sectionRef}
       className="relative min-h-[90vh] w-full overflow-hidden text-white"
     >
-
       <div
         ref={contentRef}
-        className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4 space-y-4 pt-15 sm:pt-22"
+        className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4 space-y-4 pt-16 sm:pt-20"
       >
-       <Badge 
-          className="px-4 py-2 text-xs sm:text-sm bg-white/10 backdrop-blur-sm border-white/20 text-white shadow-lg translate-y-8 sm:translate-y-4"
-        >
+        <Badge className="px-3 py-1.5 text-xs sm:text-sm bg-white/10 backdrop-blur-sm border-white/20 text-white shadow-lg translate-y-4 sm:translate-y-2">
           COMMAND BRANCH: GEEKSFORGEEKS X ELIXIR
-       </Badge>
+        </Badge>
 
         <div className="relative flex items-center justify-center w-full h-20 sm:h-30 md:h-40 lg:h-52">
           {/* The Image is now absolute, so its "transparent border" won't push anything */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none translate-x-5 translate-y-11">
-            <Image 
-              src="/stellaris-logo.webp" 
-              alt="Stellaris Logo" 
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none translate-x-2 translate-y-6 sm:translate-x-5 sm:translate-y-11">
+            <Image
+              src="/stellaris-logo.webp"
+              alt="Stellaris Logo"
               width={1200}
               height={400}
-              // scale-[2.5] or higher will make the visible logo huge 
+              // scale-[2.5] or higher will make the visible logo huge
               // while the container stays small
-              className="rotate-90 scale-[3.5] sm:scale-[4.5] md:scale-[5.5] w-auto h-full object-contain"
+              className="rotate-90 scale-[2.5] sm:scale-[3.5] md:scale-[4.5] lg:scale-[5.5] w-auto h-full object-contain"
               priority
             />
           </div>
         </div>
-
-
 
         <h2
           className={`${audiowide.className} text-xl sm:text-2xl md:text-3xl text-white/90 tracking-[0.05em] leading-tight`}
@@ -81,13 +80,15 @@ const Hero = () => {
           TRANSCEND THE CODE, CONQUER THE COSMOS.
         </h2>
 
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 w-full sm:w-auto px-2">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 mt-4 w-full max-w-sm sm:w-auto px-2">
           <Button
             size="lg"
             variant="outline"
-            className="border-2 border-white text-white hover:bg-white px-6 sm:px-10 py-5 sm:py-6 text-base sm:text-lg font-semibold tracking-wide"
+            className="border-2 border-white text-white hover:bg-white px-4 sm:px-10 py-3 sm:py-6 text-sm sm:text-lg font-semibold tracking-wide"
             onClick={() => {
-              document.getElementById('mission-briefing').scrollIntoView({ behavior: 'smooth' });
+              document
+                .getElementById("mission-briefing")
+                .scrollIntoView({ behavior: "smooth" });
             }}
           >
             <Code className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
@@ -103,19 +104,18 @@ const Hero = () => {
             <Target className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
             Register Now
           </Button> */}
-          
+
           {/* devfolio button */}
           <div
-            className="apply-button h-11 w-[312px]"
+            className="apply-button h-10 w-64 sm:h-11 sm:w-[312px] mx-auto sm:mx-0"
             data-hackathon-slug="stellaris"
             data-button-theme="dark-inverted"
           ></div>
-
         </div>
 
-        <div className="w-full max-w-4xl mt-10">
-      <CountdownTimer targetDate="2026-03-28T11:00:00" />
-      </div>
+        <div className="w-full max-w-4xl mt-6">
+          <CountdownTimer targetDate="2026-03-28T11:00:00" />
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { animate, motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
@@ -17,6 +17,44 @@ export function SpotlightNavbar({
   const [activeIndex, setActiveIndex] = useState(defaultActiveIndex);
   const [isOpen, setIsOpen] = useState(false);
   const ambienceX = useRef(0);
+  const observerRef = useRef(null);
+
+  // IntersectionObserver for active section detection
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.querySelector(item.href))
+      .filter(Boolean);
+
+    if (sections.length === 0) return;
+
+    const options = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px",
+      threshold: 0,
+    };
+
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = navItems.findIndex(
+            (item) => item.href === `#${entry.target.id}`,
+          );
+          if (index !== -1 && index !== activeIndex) {
+            setActiveIndex(index);
+          }
+        }
+      });
+    };
+
+    observerRef.current = new IntersectionObserver(handleIntersection, options);
+    sections.forEach((section) => observerRef.current.observe(section));
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, [activeIndex]);
 
   // devfolio button
   useEffect(() => {
@@ -74,10 +112,10 @@ export function SpotlightNavbar({
         ref={navRef}
         className={cn(
           "spotlight-nav spotlight-nav-bg glass-border spotlight-nav-shadow",
-          "relative h-16 rounded-full transition-all duration-300 overflow-hidden bg-black/10 backdrop-blur-xs border border-white/10 shadow-2xl w-full max-w-7xl mx-auto",
+          "relative h-14 md:h-16 rounded-full transition-all duration-300 overflow-hidden bg-black/10 backdrop-blur-xs border border-white/10 shadow-2xl w-full max-w-7xl mx-auto",
         )}
       >
-        <div className="relative flex items-center justify-between h-full px-6 sm:px-10 z-10">
+        <div className="relative flex items-center justify-between h-full px-4 sm:px-6 md:px-10 z-10">
           <button
             onClick={() => handleItemClick({ href: "#hero", label: "Home" }, 0)}
             className="focus:outline-none"
@@ -85,9 +123,9 @@ export function SpotlightNavbar({
             <Image
               src="/stellaris-logo.webp"
               alt="Stellaris Logo"
-              width={150}
-              height={40}
-              className="rotate-90 scale-[4.0] md:scale-[3.0] ml-20 h-8 sm:h-16 w-auto object-contain cursor-pointer"
+              width={120}
+              height={32}
+              className="rotate-90 scale-[3.0] md:scale-[4.0] ml-12 md:ml-20 h-6 md:h-8 w-auto object-contain cursor-pointer"
               priority
             />
           </button>
@@ -104,12 +142,12 @@ export function SpotlightNavbar({
                     data-index={idx}
                     onClick={() => handleItemClick(item, idx)}
                     className={cn(
-                      "px-3 sm:px-4 py-2 text-base font-medium transition-all duration-200 rounded-full",
+                      "px-3 sm:px-4 py-2 text-sm sm:text-base font-medium transition-all duration-300 rounded-full",
                       isRegister
-                        ? "ml-4 px-6 py-1.5 border border-white bg-gray-500/10 hover:bg-gray-500/20 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)] rounded-full"
+                        ? "ml-2 sm:ml-4 px-3 sm:px-6 py-1.5 border border-white bg-gray-500/10 hover:bg-gray-500/20 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)] rounded-full"
                         : activeIndex === idx
                           ? "text-white"
-                          : "text-neutral-400 hover:text-white",
+                          : "text-neutral-400",
                     )}
                   >
                     {item.label}
@@ -120,11 +158,11 @@ export function SpotlightNavbar({
           </ul>
 
           <button
-            className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white border border-white/20 transition-all hover:bg-white/20"
+            className="lg:hidden flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 text-white border border-white/20 transition-all hover:bg-white/20"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            {isOpen ? <X size={16} /> : <Menu size={16} />}
           </button>
         </div>
 
@@ -148,9 +186,9 @@ export function SpotlightNavbar({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="lg:hidden absolute top-20 left-4 right-4 bg-black/90 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 shadow-2xl z-40 overflow-hidden"
+            className="lg:hidden absolute top-16 md:top-20 left-4 right-4 backdrop-blur-xl bg-white/1 border border-white/20 rounded-2xl p-4 md:p-6 shadow-2xl z-40 overflow-hidden max-h-[70vh] overflow-y-auto"
           >
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-1 sm:gap-2">
               {navItems.map((item, idx) => {
                 const isRegister = item.label === "Register Now";
                 return (
@@ -163,11 +201,11 @@ export function SpotlightNavbar({
                     <button
                       onClick={() => handleItemClick(item, idx)}
                       className={cn(
-                        "w-full text-center px-4 py-3 text-lg font-medium rounded-xl transition-all",
+                        "w-full text-left px-3 py-2 text-sm sm:text-base font-medium rounded-lg transition-all duration-300",
                         isRegister
-                          ? "bg-white text-black font-bold text-center mt-4 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+                          ? "bg-white text-black font-bold mt-3 shadow-[0_0_20px_rgba(255,255,255,0.2)] px-4 py-2"
                           : activeIndex === idx
-                            ? "bg-white/10 text-white"
+                            ? "bg-white/10 text-white border border-white/20"
                             : "text-neutral-400 hover:text-white hover:bg-white/5",
                       )}
                     >
@@ -184,7 +222,6 @@ export function SpotlightNavbar({
               data-hackathon-slug="stellaris"
               data-button-theme="dark-inverted"
             ></div>
-
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,12 +1,11 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Bebas_Neue, DM_Sans } from "next/font/google";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Separator } from "../ui/separator";
 import { aboutData } from "@/lib/data/data";
-import { animatePinnedSection } from "@/lib/gsap-utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,73 +21,189 @@ const aboutBodyFont = DM_Sans({
 
 const About = () => {
   const sectionRef = useRef(null);
+  const containerRef = useRef(null);
+  const astronautRef = useRef(null);
   const contentRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Drag state
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
-      // Pass null for videoElement if it doesn't exist
-      animatePinnedSection(sectionRef.current, null, contentRef.current);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (!sectionRef.current || isMobile) return;
+
+    const ctx = gsap.context(() => {
+      // Kill any existing ScrollTriggers for this section
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.trigger === sectionRef.current) {
+          trigger.kill();
+        }
+      });
+
+      // Set will-change for performance
+      gsap.set([astronautRef.current, contentRef.current], {
+        willChange: "transform, opacity",
+      });
+
+      // Create timeline for synchronized animations
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          scrub: 1.5,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      // Astronaut animation: enters from left with subtle elastic effect
+      tl.fromTo(
+        astronautRef.current,
+        {
+          opacity: 0,
+          x: -120,
+          scale: 0.96,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          ease: "back.out(1.2)",
+          duration: 1,
+        },
+        0,
+      );
+
+      // Right content animation: enters from right with slight overlap
+      tl.fromTo(
+        contentRef.current,
+        {
+          opacity: 0,
+          x: 120,
+          scale: 0.96,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          ease: "back.out(1.1)",
+          duration: 1,
+        },
+        0.2, // Slight overlap for balance
+      );
+
+      // Clean up will-change after animation
+      tl.eventCallback("onComplete", () => {
+        gsap.set([astronautRef.current, contentRef.current], {
+          willChange: "auto",
+        });
+      });
     }, sectionRef);
 
-    // Scroll reset listener
+    // Scroll reset listener for drag
     const handleScroll = () => {
       if (x.get() !== 0 || y.get() !== 0) {
-        // Smoothly animate back to 0
-        // We can use x.set(0) for instant, or animate for smooth.
-        // Let's try simple set first as regular spring might fight drag.
-        // Actually, animate() from framer-motion is better but hook usage is cleaner.
-        // For simplicity and robustness with useMotionValue, we'll just set to 0.
-        // If we want smooth return, we could use a spring, but that complicates drag.
-        // Let's use a small timeout or just set it to reset immediately on scroll.
         x.set(0);
         y.set(0);
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       ctx.revert();
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isMobile, x, y]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen w-full overflow-hidden text-white flex items-center justify-center p-4 md:p-10"
+      className="relative w-full overflow-hidden text-white flex items-center justify-center p-4 md:p-10 min-h-screen"
     >
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
-        {/* Astronaut Image - Visible on large screens, hidden or smaller on mobile if needed */}
+      <div
+        ref={containerRef}
+        className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 lg:gap-12"
+      >
+        {/* Astronaut Image */}
         <motion.div
-          className="w-full md:w-1/2 flex justify-center md:justify-end"
-          drag
-          dragConstraints={sectionRef}
-          dragElastic={0.2}
+          ref={astronautRef}
+          className="w-full md:w-1/2 flex justify-center md:justify-end order-1 md:order-1"
+          drag={!isMobile}
+          dragConstraints={{
+            left: -100,
+            right: 100,
+            top: -50,
+            bottom: 50,
+          }}
+          dragElastic={0.15}
+          dragTransition={{
+            bounceStiffness: 300,
+            bounceDamping: 30,
+            power: 0.3,
+            timeConstant: 200,
+          }}
+          dragMomentum={false}
           style={{
             x,
             y,
-            cursor: "url('/asteroid-cursor.webp') 16 16, move",
+            cursor: isMobile ? "default" : "url('/cursor.png') 12 12, auto",
+            touchAction: "none",
           }}
-          whileTap={{ scale: 0.95 }}
+          whileDrag={{
+            scale: 1.05,
+            rotate: 2,
+            transition: { duration: 0.2 },
+            cursor: "url('/cursor.png') 12 12, grabbing",
+          }}
+          whileTap={
+            !isMobile
+              ? {
+                  scale: 0.95,
+                  transition: { duration: 0.1 },
+                }
+              : {}
+          }
+          onDragStart={() => {
+            if (!isMobile) {
+              document.body.style.cursor = "url('/cursor.png') 12 12, grabbing";
+            }
+          }}
+          onDragEnd={() => {
+            if (!isMobile) {
+              document.body.style.cursor = "auto";
+            }
+          }}
         >
           <img
             src="/astro.2.webp"
             alt="Astronaut"
-            className="w-full max-w-[650px] object-contain drop-shadow-[0_0_15px_rgba(0,128,255,0.3)] animate-astro-float brightness-85 pointer-events-none"
+            className={`w-full object-contain drop-shadow-[0_0_15px_rgba(0,128,255,0.3)] animate-astro-float brightness-85 pointer-events-none ${
+              isMobile ? "max-w-[300px]" : "max-w-[650px]"
+            }`}
           />
         </motion.div>
 
         {/* Mission Briefing Card */}
-        <div ref={contentRef} className="w-full md:w-1/2">
-          <Card className="bg-black/60 backdrop-blur-xl border-white/10 text-white shadow-2xl">
+        <div ref={contentRef} className="w-full md:w-1/2 order-2 md:order-2">
+          <Card className="bg-white/1 backdrop-blur-xl border-white/10 text-white shadow-2xl">
             <CardHeader>
               <CardTitle
-                className={`${sectionHeadingFont.className} text-4xl md:text-5xl mb-4 tracking-[0.08em] uppercase font-bold text-white`}
+                className={`${sectionHeadingFont.className} ${
+                  isMobile ? "text-3xl" : "text-4xl md:text-5xl"
+                } mb-4 tracking-[0.08em] uppercase font-bold text-white`}
               >
                 Mission{" "}
                 <span className="bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
@@ -100,7 +215,9 @@ const About = () => {
 
             <CardContent className="space-y-6 text-gray-300">
               <p
-                className={`${aboutBodyFont.className} text-base md:text-lg leading-relaxed`}
+                className={`${aboutBodyFont.className} ${
+                  isMobile ? "text-sm" : "text-base md:text-lg"
+                } leading-relaxed`}
               >
                 <span className="font-semibold bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
                   CLASSIFIED: Stellar Corps
@@ -116,17 +233,21 @@ const About = () => {
               </p>
 
               <p
-                className={`${aboutBodyFont.className} text-base md:text-lg leading-relaxed`}
+                className={`${aboutBodyFont.className} text-sm md:text-base leading-relaxed`}
               >
                 This is{" "}
                 <span className="font-semibold bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
-                  humanity’s last stand
+                  humanity&apos;s last stand
                 </span>{" "}
                 against the gravity of code and creative void. Developers unite,
                 adapt, and rise beyond all horizons.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left">
+              <div
+                className={`grid ${
+                  isMobile ? "grid-cols-1" : "grid-cols-2"
+                } gap-3 text-left`}
+              >
                 {aboutData.map((item, idx) => (
                   <div
                     key={idx}
@@ -134,11 +255,17 @@ const About = () => {
                   >
                     <div className="flex-shrink-0">{item.icon}</div>
                     <div className="min-w-0">
-                      <h3 className="font-semibold text-white text-md md:text-base truncate">
+                      <h3
+                        className={`font-semibold text-white ${
+                          isMobile ? "text-sm" : "text-md md:text-base"
+                        } truncate`}
+                      >
                         {item.title}
                       </h3>
                       <p
-                        className={`${aboutBodyFont.className} text-gray-400 text-xs md:text-sm line-clamp-2`}
+                        className={`${aboutBodyFont.className} text-gray-400 ${
+                          isMobile ? "text-xs" : "text-xs md:text-sm"
+                        } line-clamp-2`}
                       >
                         {item.text}
                       </p>

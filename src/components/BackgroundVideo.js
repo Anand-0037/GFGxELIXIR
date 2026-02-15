@@ -66,7 +66,10 @@ export default function BackgroundVideo() {
         muted
         playsInline
       >
-        <source src="/bg%20video%202.mp4" type="video/mp4" />
+        <source
+          src="https://res.cloudinary.com/djrs8vc5s/video/upload/v1771109086/background_hmtian.mp4"
+          type="video/mp4"
+        />
       </video>
       <video
         ref={videoRef2}
@@ -78,9 +81,11 @@ export default function BackgroundVideo() {
         }`}
         muted
         playsInline
-
       >
-        <source src="/bg%20video%202.mp4" type="video/mp4" />
+        <source
+          src="https://res.cloudinary.com/djrs8vc5s/video/upload/v1771109086/background_hmtian.mp4"
+          type="video/mp4"
+        />
       </video>
       <div className="absolute inset-0 bg-black/40" />{" "}
       {/* Overlay for better text readability */}

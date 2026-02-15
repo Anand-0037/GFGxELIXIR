@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 const Unit = ({ value, label }) => (
   <div className="flex flex-col items-center min-w-0 flex-1">
     <div className="relative w-full flex justify-center">
-      <div className="absolute -inset-1 rounded-xl bg-white/10 blur-lg opacity-20" />
+      <div className="absolute -inset-1 rounded-xl opacity-20" />
 
       <div
         className="
@@ -13,12 +13,10 @@ const Unit = ({ value, label }) => (
         w-full max-w-35
         aspect-square
         flex flex-col items-center justify-center
-        rounded-xl border border-white/10
-        bg-white/[0.05] backdrop-blur-md
-        shadow-[0_8px_28px_rgba(0,0,0,0.55)]
+        rounded-xl
         "
       >
-        <span className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-mono font-semibold text-slate-100 tabular-nums leading-none">
+        <span className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-mono font-semibold text-slate-100 tabular-nums leading-none">
           {value.toString().padStart(2, "0")}
         </span>
 
@@ -29,9 +27,6 @@ const Unit = ({ value, label }) => (
     </div>
   </div>
 );
-
-
-
 
 const CountdownTimer = ({ targetDate }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -54,11 +49,9 @@ const CountdownTimer = ({ targetDate }) => {
       setTimeLeft({
         days: Math.floor(distance / (1000 * 60 * 60 * 24)),
         hours: Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
         ),
-        minutes: Math.floor(
-          (distance % (1000 * 60 * 60)) / (1000 * 60)
-        ),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
         seconds: Math.floor((distance % (1000 * 60)) / 1000),
       });
     }, 1000);
@@ -67,19 +60,28 @@ const CountdownTimer = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <div className="w-full flex justify-center">
+    <div className="w-full flex justify-center -mt-10 md:-mt-4">
       <div
         className="
         w-full max-w-7xl
         flex flex-nowrap
         justify-between
-        gap-2 sm:gap-4 md:gap-8
-        px-2 sm:px-4
+        gap-1 sm:gap-4 md:gap-8
+        px-1 sm:px-4
         "
       >
         <Unit value={timeLeft.days} label="days" />
+        <span className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-mono font-semibold text-slate-100 tabular-nums leading-none mt-3">
+          :
+        </span>
         <Unit value={timeLeft.hours} label="hours" />
+        <span className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-mono font-semibold text-slate-100 tabular-nums leading-none mt-3">
+          :
+        </span>
         <Unit value={timeLeft.minutes} label="mins" />
+        <span className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-mono font-semibold text-slate-100 tabular-nums leading-none mt-3">
+          :
+        </span>
         <Unit value={timeLeft.seconds} label="secs" />
       </div>
     </div>

@@ -95,93 +95,80 @@ export const faqs = [
 ];
 
 export const timelineData = [
-    {
-      title: "15 February",
-      content: (
-        <div>
-          <p className="mb-4 text-xs font-normal text-white/80 md:text-sm">
-            Registration Opens
-          </p>
-          <p className="text-xs text-white/60 md:text-sm">
-            Sign up starts now! Get ready for an amazing hackathon experience.
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "15 March",
-      content: (
-        <div>
-          <p className="mb-4 text-xs font-normal text-white/80 md:text-sm">
-            Registration Closed
-          </p>
-          <p className="text-xs text-white/60 md:text-sm">
-            Registration is now closed. Stay tuned for updates and announcements!
-          </p>
-        </div>
-      ),
-    },
-    // {
-    //   title: "Feb 1",
-    //   content: (
-    //     <div>
-    //       <p className="mb-4 text-xs font-normal text-white/80 md:text-sm">
-    //         Deadline Extended
-    //       </p>
-    //       <p className="text-xs text-white/60 md:text-sm">
-    //         Last chance to register! Don't miss this opportunity.
-    //       </p>
-    //     </div>
-    //   ),
-    // },
-    {
-      title: "28 March",
-      content: (
-        <div>
-          <p className="mb-4 text-xs font-normal text-white/80 md:text-sm">
-            Hackathon Begins
-          </p>
-          <p className="text-xs text-white/60 md:text-sm">
-            Coding, innovation, and collaboration starts now!
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "29 March",
-      content: (
-        <div>
-          <p className="mb-4 text-xs font-normal text-white/80 md:text-sm">
-            Submissions Due
-          </p>
-          <p className="text-xs text-white/60 md:text-sm">
-            Final demos presented. Show us what you&apos;ve built!
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "29 March",
-      content: (
-        <div>
-          <p className="mb-4 text-xs font-normal text-white/80 md:text-sm">
-            Results & Awards
-          </p>
-          <p className="text-xs text-white/60 md:text-sm">
-            Winners announced! Celebrate the amazing projects and innovations.
-          </p>
-        </div>
-      ),
-    },
-  ];
+  {
+    title: "15 February",
+    content: (
+      <div className="space-y-3">
+        <h4 className="text-xl md:text-2xl font-bold text-white">
+          Registration Opens
+        </h4>
+        <p className="text-base md:text-lg text-white/80 leading-relaxed">
+          Sign up starts now! Get ready for an amazing hackathon experience. Secure your spot and join us for 36 hours of innovation.
+        </p>
+      </div>
+    ),
+  },
+  {
+    title: "15 March",
+    content: (
+      <div className="space-y-3">
+        <h4 className="text-xl md:text-2xl font-bold text-white">
+          Registration Closed
+        </h4>
+        <p className="text-base md:text-lg text-white/80 leading-relaxed">
+          Registration is now closed. Stay tuned for updates and announcements as we prepare for the main event!
+        </p>
+      </div>
+    ),
+  },
+  {
+    title: "28 March",
+    content: (
+      <div className="space-y-3">
+        <h4 className="text-xl md:text-2xl font-bold text-white">
+          Hackathon Begins
+        </h4>
+        <p className="text-base md:text-lg text-white/80 leading-relaxed">
+          Coding, innovation, and collaboration starts now! Teams begin their 36-hour journey to create amazing projects.
+        </p>
+      </div>
+    ),
+  },
+  {
+    title: "29 March",
+    content: (
+      <div className="space-y-3">
+        <h4 className="text-xl md:text-2xl font-bold text-white">
+          Submissions Due
+        </h4>
+        <p className="text-base md:text-lg text-white/80 leading-relaxed">
+          Final demos presented. Show us what you&apos;ve built! Time to showcase your innovative solutions.
+        </p>
+      </div>
+    ),
+  },
+  {
+    title: "29 March",
+    content: (
+      <div className="space-y-3">
+        <h4 className="text-xl md:text-2xl font-bold text-white">
+          Results & Awards
+        </h4>
+        <p className="text-base md:text-lg text-white/80 leading-relaxed">
+          Winners announced! Celebrate the amazing projects and innovations. Prizes, recognition, and new beginnings await.
+        </p>
+      </div>
+    ),
+  },
+];
 
 export const sponsorsData = [
-    { tier: "India Blockchain Week 2024", image: "/sponsors/ibw.svg", glow: "from-blue-500/20" },
-    { tier: "Devfolio Logo", image: "/sponsors/DevfolioDArk.png", glow: "from-cyan-500/20" },
-    { tier: "QuillAudits", image: "/sponsors/QuillAudit.webp", glow: "from-purple-500/20" },
-    { tier: "ETHIndia", image: "/sponsors/ethindia-logo.svg", glow: "from-pink-500/20" },
-    { tier: "Polygon", image: "/sponsors/Polygon.svg", glow: "from-indigo-500/20" },
-  ];
+  { tier: "India Blockchain Week 2024", image: "/sponsors/ibw.svg", glow: "from-blue-500/20" },
+  { tier: "Devfolio Logo", image: "/sponsors/DevfolioDark.png", glow: "from-cyan-500/20" },
+  { tier: "QuillAudits", image: "/sponsors/QuillAudit.webp", glow: "from-purple-500/20" },
+  { tier: "ETHIndia", image: "/sponsors/ethindia-logo.svg", glow: "from-pink-500/20" },
+  { tier: "Polygon", image: "/sponsors/Polygon.svg", glow: "from-indigo-500/20" },
+];
 
 export const navItems = [
     { label: "Home", href: "#hero" },

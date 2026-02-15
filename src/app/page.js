@@ -11,41 +11,40 @@ import Footer from "@/components/subComponents/Footer";
 import MissionTimeline from "@/components/subComponents/MissionTimeline";
 import SmallSponsor from "@/components/subComponents/SmallSponsor";
 
-
 export default function Home() {
   return (
     <div className="relative min-h-screen text-white overflow-x-hidden">
       <SpotlightNavbar />
 
-      <section id="hero" className="relative z-10">
+      <section id="hero" className="relative z-10 scroll-mt-20">
         <Hero />
       </section>
 
-      <section id="mission-briefing" className="relative z-10 scroll-mt-12">
+      <section id="mission-briefing" className="relative z-10 scroll-mt-20">
         <About />
       </section>
 
-      <section id="tracks" className="relative z-10">
+      <section id="tracks" className="relative z-10 scroll-mt-20">
         <Cards />
       </section>
 
-      <section id="timeline" className="relative z-10 scroll-mt-12">
+      <section id="timeline" className="relative z-10 scroll-mt-20">
         <MissionTimeline />
       </section>
 
-      <section id="sponsors" className="relative z-10">
+      <section id="sponsors" className="relative z-10 scroll-mt-20">
         <SmallSponsor />
       </section>
 
-      <section id="prizes" className="relative z-10">
+      <section id="prizes" className="relative z-10 scroll-mt-20">
         <Prizes />
       </section>
 
-      <section id="faq" className="relative z-10">
+      <section id="faq" className="relative z-10 scroll-mt-20">
         <FAQ />
       </section>
 
-      <section id="contact" className="relative z-10">
+      <section id="contact" className="relative z-10 scroll-mt-20">
         <CTA />
       </section>
 

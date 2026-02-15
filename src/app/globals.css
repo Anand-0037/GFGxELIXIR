@@ -128,11 +128,6 @@
   }
 }
 
-/* Force global cursor override */
-html, body, a, button, [role="button"] {
-  cursor: url('/rocket-cursor.webp') 0 0, auto !important;
-}
-
 @keyframes astro-float {
   0%,
   100% {

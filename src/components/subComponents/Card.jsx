@@ -136,7 +136,7 @@ const Cards = () => {
               <div
                 className={`
                   relative overflow-hidden h-[300px]
-                  rounded-3xl
+                  rounded-xl
                   bg-gradient-to-br from-white/[0.08] to-white/[0.02]
                   backdrop-blur-xl
                   border border-white/10
