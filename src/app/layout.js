@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "GfG × Elixir Hackathon 2025",
   description:
-    "Join 1000+ developers, designers, and innovators for an epic 48-hour hackathon. Build cutting-edge projects and compete for amazing prizes.",
+  "Join 1000+ developers, designers, and innovators for an epic 48-hour hackathon. Build cutting-edge projects and compete for amazing prizes.",
 };
 
 export default function RootLayout({ children }) {
@@ -27,6 +27,7 @@ export default function RootLayout({ children }) {
       >
         <BackgroundVideo />
         <GSAPProvider>{children}</GSAPProvider>
+      <script defer async src="https://apply.devfolio.co/v2/sdk.js"></script>
       </body>
     </html>
   );

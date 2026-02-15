@@ -6,10 +6,7 @@ import { useEffect, useRef } from "react";
 import { Card, CardContent } from "../ui/card";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  animateSectionFadeIn,
-  animateCardsStagger,
-} from "@/lib/gsap-utils";
+import { animateSectionFadeIn, animateCardsStagger } from "@/lib/gsap-utils";
 // import Image from "next/image";
 import { pastSponsorsData, sponsorsData } from "@/lib/data/data";
 
@@ -47,8 +44,10 @@ const SmallSponsor = () => {
             <div className="h-[1px] w-12 bg-blue-500/50" />
           </div>
           <h2 className="text-5xl md:text-7xl font-extralight tracking-tighter uppercase italic">
-            Platform 
-            <span className="font-bold bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">Partner</span>
+            Platform
+            <span className="font-bold bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
+              Partner
+            </span>
           </h2>
         </div>
 
@@ -78,15 +77,21 @@ const SmallSponsor = () => {
                     //     "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)",
                     // }}
                   >
-                    <div className="absolute"> 
-                      <img
+                    <div className="absolute">
+                      {/* <img
                         width={130}
                         height={100}
                         src={sponsor.image}
                         alt={sponsor.alt}
                         className="object-contain"
                         // className="object-contain filter grayscale group-hover:grayscale-0 brightness-100 group-hover:brightness-100 transition-all duration-1000"
-                      />
+                      /> */}
+                      <a href="https://stellaris.devfolio.co" target="_blank">
+                        <img
+                          src="./sponsors/DevfolioDark.webp"
+                          alt="Devfolio Logo"
+                        />
+                      </a>
                     </div>
                   </div>
 

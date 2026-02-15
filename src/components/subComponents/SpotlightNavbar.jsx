@@ -220,7 +220,7 @@ export function SpotlightNavbar({
             <div
               className="apply-button h-11 w-[312px]"
               data-hackathon-slug="stellaris"
-              data-button-theme="dark"
+              data-button-theme="light"
             ></div>
           </motion.div>
         )}

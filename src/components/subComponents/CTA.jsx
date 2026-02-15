@@ -104,8 +104,15 @@ const CTA = () => {
           <div
             className="apply-button h-11 w-[312px]"
             data-hackathon-slug="stellaris"
-            data-button-theme="dark"
+            data-button-theme="light"
           ></div>
+
+          {/* <div
+            class="apply-button"
+            data-hackathon-slug="stellaris"
+            data-button-theme="light"
+            style="height: 44px; width: 312px"
+          ></div> */}
 
           <a href="https://discord.gg/yTxvuuktdZ" target="blank">
             <Button

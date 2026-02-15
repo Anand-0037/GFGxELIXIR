@@ -109,7 +109,7 @@ const Hero = () => {
           <div
             className="apply-button h-10 w-64 sm:h-11 sm:w-[312px] mx-auto sm:mx-0"
             data-hackathon-slug="stellaris"
-            data-button-theme="dark"
+            data-button-theme="light"
           ></div>
         </div>
 
