@@ -44,7 +44,7 @@ const SmallSponsor = () => {
             <div className="h-[1px] w-12 bg-blue-500/50" />
           </div>
           <h2 className="text-5xl md:text-7xl font-extralight tracking-tighter uppercase italic">
-            Platform
+            Platform{" "}
             <span className="font-bold bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
               Partner
             </span>
@@ -70,12 +70,12 @@ const SmallSponsor = () => {
                   </span>
 
                   <div
-                    className="relative w-45 h-42 bg-white/5 flex items-center justify-center"
-                    // className="relative w-45 h-42 bg-white/5 flex items-center justify-center transition-transform duration-700 group-hover:rotate-[360deg]"
-                    // style={{
-                    //   clipPath:
-                    //     "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)",
-                    // }}
+                    // className="relative w-45 h-42 bg-white/5 flex items-center justify-center"
+                    className="relative w-45 h-42 bg-white/5 flex items-center justify-center transition-transform duration-900 group-hover:rotate-[360deg]"
+                    style={{
+                      clipPath:
+                        "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)",
+                    }}
                   >
                     <div className="absolute">
                       {/* <img

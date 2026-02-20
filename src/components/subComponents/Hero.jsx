@@ -22,16 +22,16 @@ const Hero = () => {
   const contentRef = useRef(null);
 
   // devfolio button
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://apply.devfolio.co/v2/sdk.js";
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const script = document.createElement("script");
+  //   script.src = "https://apply.devfolio.co/v2/sdk.js";
+  //   script.async = true;
+  //   script.defer = true;
+  //   document.body.appendChild(script);
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   };
+  // }, []);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -107,7 +107,7 @@ const Hero = () => {
 
           {/* devfolio button */}
           <div
-            className="apply-button h-10 w-64 sm:h-11 sm:w-[312px] mx-auto sm:mx-0"
+            className="apply-button h-11 w-[312px]"
             data-hackathon-slug="stellaris"
             data-button-theme="light"
           ></div>
